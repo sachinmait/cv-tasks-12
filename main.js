@@ -1,5 +1,29 @@
 // CV Visualizer Logic
 
+function switchTab(tabId) {
+    // 1. Deactivate all buttons & tabs
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+    // 2. Activate clicked
+    const btnBox = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.textContent.toLowerCase().includes(tabId));
+    // Simpler: Just rely on onclick context if we passed 'this', but we passed ID string.
+    // Let's match by index or just find the one that called it.
+    // Actually, let's just use the index mapping or event target if possible.
+    // Easier: Select by order since ID matches content broadly? No.
+    // Let's just find the button where onclick has the string.
+    const btns = document.querySelectorAll('.tab-btn');
+    if (tabId === 'detect') btns[0].classList.add('active');
+    if (tabId === 'classify') btns[1].classList.add('active');
+    if (tabId === 'segment') btns[2].classList.add('active');
+    if (tabId === 'face') btns[3].classList.add('active');
+    if (tabId === 'action') btns[4].classList.add('active');
+
+    // 3. Activate Pane
+    document.getElementById('tab-' + tabId).classList.add('active');
+}
+
+
 function toggleOverlay(type) {
     if (type === 'detect') {
         const el = document.getElementById('overlay-detect');

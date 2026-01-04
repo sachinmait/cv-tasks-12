@@ -145,20 +145,24 @@
         <p>Interactive lab: How machines "see" the world.</p>
     </header>
 
-    <main style="display: grid; gap: 2rem;">
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('detect')">1. Detection</button>
+        <button class="tab-btn" onclick="switchTab('classify')">2. Classification</button>
+        <button class="tab-btn" onclick="switchTab('segment')">3. Segmentation</button>
+        <button class="tab-btn" onclick="switchTab('face')">4. Face Rec</button>
+        <button class="tab-btn" onclick="switchTab('action')">5. Action Rec</button>
+    </nav>
 
-        <!-- 1. OBJECT DETECTION -->
-        <section class="neo-card">
+    <main>
+
+        <!-- 1. OBJECT DETECTION TAB -->
+        <section id="tab-detect" class="tab-pane active neo-card">
             <h2>1. Object Detection</h2>
             <p>Finding "Needles in a Digital Haystack". Identifying and locating specific objects.</p>
             <div class="demo-container">
-                <!-- We use the generated Snow Leopard image -->
                 <img src="assets/snow_leopard.png" class="demo-img" alt="Mountain Landscape">
                 <div id="overlay-detect" class="overlay">
-                    <!-- Simulated Bounding Box for Snow Leopard -->
-                    <!-- Positioning is approximate based on generated image content, 
-                  User might need to adjust logic if image is totally different, 
-                  but for a generic mountain prompted with 'center', we guess clearly. -->
                     <div class="bbox" style="top: 60%; left: 40%; width: 25%; height: 25%;">
                         <div class="bbox-label">Snow Leopard: 99%</div>
                     </div>
@@ -167,8 +171,8 @@
             <button class="neo-btn" onclick="toggleOverlay('detect')">Toggle Detection</button>
         </section>
 
-        <!-- 2. IMAGE CLASSIFICATION -->
-        <section class="neo-card">
+        <!-- 2. IMAGE CLASSIFICATION TAB -->
+        <section id="tab-classify" class="tab-pane neo-card">
             <h2>2. Image Classification</h2>
             <p>Assigning a single category label to an image.</p>
             <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
@@ -176,7 +180,7 @@
                     <img src="assets/dog.png" class="demo-img" alt="Dog Portrait">
                 </div>
                 <div id="class-result" class="neo-card bg-yellow"
-                    style="opacity: 0.5; transform: scale(0.9); transition: all 0.3s;">
+                    style="opacity: 0.5; transform: scale(0.9); transition: all 0.3s; margin-bottom: 0;">
                     <h3>Prediction:</h3>
                     <div style="font-size: 2rem; font-weight: 900;">DOG</div>
                     <div
@@ -190,8 +194,8 @@
             <button class="neo-btn" onclick="classifyImage()">Classify Image</button>
         </section>
 
-        <!-- 3. IMAGE SEGMENTATION -->
-        <section class="neo-card">
+        <!-- 3. IMAGE SEGMENTATION TAB -->
+        <section id="tab-segment" class="tab-pane neo-card">
             <h2>3. Image Segmentation</h2>
             <p>Dividing an image into pixel-perfect regions (Road, Car, Sky).</p>
             <div class="demo-container">
@@ -209,16 +213,13 @@
             <button class="neo-btn" onclick="toggleOverlay('seg')">Apply Mask</button>
         </section>
 
-        <!-- 4. FACE RECOGNITION -->
-        <section class="neo-card">
+        <!-- 4. FACE RECOGNITION TAB -->
+        <section id="tab-face" class="tab-pane neo-card">
             <h2>4. Face Recognition</h2>
             <p>Identifying individuals using biometrics (like DigiYatra).</p>
             <div class="demo-container"
                 style="height: 300px; background: #ddd; display: flex; align-items: center; justify-content: center;">
                 <img src="assets/dog.png" style="height: 100%; opacity: 0.6; filter: grayscale(1);">
-                <!-- Reusing Dog as "User" just for demo, or we can use a generated face. 
-                 Let's assume "Dog Face ID" for fun or just use generic placeholder. 
-                 Actually user asked for DigiYatra, let's keep it generic "ID Verified". -->
                 <div id="overlay-face" class="overlay">
                     <div class="face-grid" style="width: 100%; height: 100%; position: absolute; opacity: 0.5;"></div>
                     <div class="face-box">
@@ -234,8 +235,8 @@
             </div>
         </section>
 
-        <!-- 5. ACTION RECOGNITION -->
-        <section class="neo-card">
+        <!-- 5. ACTION RECOGNITION TAB -->
+        <section id="tab-action" class="tab-pane neo-card">
             <h2>5. Action Recognition</h2>
             <p>Understanding movement and behavior (Surveillance).</p>
             <div class="demo-container stickman-container">
