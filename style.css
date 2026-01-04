@@ -1,0 +1,119 @@
+/* Neo-Brutalism Global Styles 
+   Optimized for Accessibility & Grade 9 Educational Content
+*/
+
+:root {
+  /* Colors from reference */
+  --bg-main: #FFDC8B;      /* Light Cream/Yellowish */
+  --accent-pink: #FE90E8;
+  --accent-blue: #C0F7FE;
+  --accent-green: #99E885;
+  --accent-yellow: #F7CB46;
+  --black: #000000;
+  --white: #FFFFFF;
+
+  /* Brutalist Specs */
+  --border-thickness: 4px;
+  --hard-shadow: 8px 8px 0px var(--black);
+  --hard-shadow-hover: 4px 4px 0px var(--black);
+}
+
+/* 1. Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif; /* Bold, readable sans-serif */
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--black);
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+/* 2. Layout Containers */
+.neo-card {
+  background: var(--white);
+  border: var(--border-thickness) solid var(--black);
+  box-shadow: var(--hard-shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+}
+
+/* 3. Typography (Bold & Large) */
+h1, h2, h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+
+p {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* 4. Interactive Elements (Buttons & Tabs) */
+.neo-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: var(--border-thickness) solid var(--black);
+  background: var(--accent-yellow);
+  color: var(--black);
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--hard-shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.neo-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--hard-shadow-hover);
+}
+
+.neo-btn:active {
+  transform: translate(8px, 8px);
+  box-shadow: 0px 0px 0px var(--black);
+}
+
+/* 5. Color Modifier Classes (Accessibility focus) */
+.bg-pink   { background-color: var(--accent-pink) !important; }
+.bg-blue   { background-color: var(--accent-blue) !important; }
+.bg-green  { background-color: var(--accent-green) !important; }
+.bg-yellow { background-color: var(--accent-yellow) !important; }
+
+/* 6. Geometric Shapes (Decorative) */
+.neo-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: var(--border-thickness) solid var(--black);
+  display: inline-block;
+}
+
+.neo-divider {
+  height: var(--border-thickness);
+  background: var(--black);
+  margin: 2rem 0;
+}
+
+/* 7. Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .neo-btn, .neo-card {
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 4px dashed var(--accent-pink);
+  outline-offset: 4px;
+}
